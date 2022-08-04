@@ -8,7 +8,7 @@ The elevated bootstrap script automatically configures some Windows settings and
 
 1. Run the following command in an elevated Powershell session:
 
-```Set-ExecutionPolicy Bypass; Invoke-WebRequest -Uri https://raw.githubusercontent.com/soda3x/windows-bootstrap/main/bootstrap.ps1 -OutFile .\elevated-bootstrap.ps1; Invoke-Expression .\elevated-bootstrap.ps1```
+```Set-ExecutionPolicy Bypass; Invoke-WebRequest -Uri https://raw.githubusercontent.com/soda3x/windows-bootstrap/main/elevated-bootstrap.ps1 -OutFile .\elevated-bootstrap.ps1; Invoke-Expression .\elevated-bootstrap.ps1```
 
 2. Update Windows to the latest version and restart, the initial version of Windows 11 (build 22000) does not include winget.exe which is required for the non-elevated bootstrap.
 
