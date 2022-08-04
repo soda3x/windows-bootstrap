@@ -12,7 +12,7 @@ Stop-Process -processname explorer
 Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All -All
 
 # Enable WSL:
-Enable-WindowsOptionalFeature -Online Microsoft-Windows-Subsystem-Linux -All
+Enable-WindowsOptionalFeature -Online Microsoft-Windows-Subsystem-Linux
 
 # Add C:\tools to system path, stand-alone apps will be installed to C:\tools and will need to be on path
 [System.Environment]::SetEnvironmentVariable('Path','$Env:Path;C:\tools',[System.EnvironmentVariableTarget]::Machine)
