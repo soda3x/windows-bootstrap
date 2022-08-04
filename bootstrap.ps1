@@ -1,5 +1,5 @@
 # Change Execution Policy to run Powershell scripts
-Update-ExecutionPolicy Unrestricted
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Bypass -Force;
 
 #=========Configure windows settings=========
 
@@ -53,7 +53,7 @@ foreach ($app in $wingetApps) {
 Invoke-Expression "python3 -m pip install --user pipx"
 
 # Use regex to get Python3.X path and keep this script future proof
-$python3Path = Get-ChildItem | Where-Object {$_.Name -match "$env:USERPROFILE\AppData\Roaming\Python\Python3*\Scripts"
+$python3Path = Get-ChildItem | Where-Object {$_.Name -match "$env:USERPROFILE\AppData\Roaming\Python\Python3*\Scripts"}
 
 Invoke-Expression "cd $python3Path\pipx.exe ensurepath"
 

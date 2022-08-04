@@ -12,3 +12,4 @@ qBittorrent.qBittorrent
 Microsoft.VisualStudioCode
 Python.Python.3
 Neovim.Neovim
+gerardog.gsudo
