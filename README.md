@@ -1,34 +1,18 @@
 # Windows 11 Bootstrapping Script
 
-> This script is built with Windows 11 in mind. As such, things like winget are utilised and are not installed as part of the script as it's assumed these dependencies are already there.
+> These scripts are built with Windows 11 in mind. As such, things like winget are utilised and are not installed as part of the script as it's assumed these dependencies are already there.
 
-To configure Windows settings, run the following commands in an elevated Powershell:
+## Run the Elevated Bootstrap script
 
-## Windows Configuration (Prerequisite steps)
+The elevated bootstrap script automatically configures some Windows settings and updates the System Path in preparation for the execution of the non-elevated bootstrap script.
 
-1. Allow the running of Powershell scripts:
+1. Run the following command in an elevated Powershell session:
 
-```Set-ExecutionPolicy Bypass```
+```Set-ExecutionPolicy Bypass; Invoke-WebRequest -Uri https://raw.githubusercontent.com/soda3x/windows-bootstrap/main/bootstrap.ps1 -OutFile .\elevated-bootstrap.ps1; Invoke-Expression .\elevated-bootstrap.ps1```
 
-2. Turn off User Account Control:
+2. Update Windows to the latest version and restart, the initial version of Windows 11 (build 22000) does not include winget.exe which is required for the non-elevated bootstrap.
 
-```Set-ItemProperty -Path REGISTRY::HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System -Name ConsentPromptBehaviorAdmin -Value 0```
-
-3. Show Hidden Files, Protected OS Files and File Extensions in Explorer:
-
-```Set-WindowsExplorerOptions -EnableShowProtectedOSFiles -EnableShowFileExtensions -EnableShowFullPathInTitleBar -EnableShowHiddenFilesFoldersDrives```
-
-4. Enable Hyper-V (requires Restart):
-
-```Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All -All```
-
-5. Enable WSL (requires Restart):
-
-```Enable-WindowsOptionalFeature -Online Microsoft-Windows-Subsystem-Linux -All```
-
-6. Update Windows to the latest version and restart, the initial version of Windows 11 (build 22000) does not include winget.exe which is required.
-
-7. Finally, open the Windows Store, navigate to Library and "Get Updates" and wait for updates to complete.
+3. Finally, open the Windows Store, navigate to Library and "Get Updates" and wait for updates to complete.
 
 ## Run the Bootstrap script
 

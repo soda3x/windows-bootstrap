@@ -1,11 +1,3 @@
-#=========Configure windows settings=========
-
-# Disable bing search results from start-menu search
-Set-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Search -Name BingSearchEnabled -Type DWord -Value 0
-
-# Change explorer home screen back to This PC
-Set-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced -Name LaunchTo -Type DWord -Value 1
-
 #=========Install apps with package managers=========
 
 # Download applist-winget.txt from the bootstrap repository and install winget apps
@@ -56,11 +48,11 @@ Invoke-WebRequest -Uri https://github.com/SpatiumPortae/portal/releases/download
 
 # Alias commands in Powershell by creating a profile
 # Alias pls to ls
-$plsAlias = "Set-Alias -Name ls -Value pls\r\n"
-$lazygitAlias = "Set-Alias -Name lg -Value lazygit\r\n"
-$pinguAlias = "Set-Alias -Name ping -Value pingu\r\n"
-$neovimVimAlias = "Set-Alias -Name vim -Value nvim\r\n"
-$neovimViAlias = "Set-Alias -Name vi -Value nvim\r\n"
+$plsAlias = "Set-Alias -Name ls -Value pls`r\`n"
+$lazygitAlias = "Set-Alias -Name lg -Value lazygit`r`n"
+$pinguAlias = "Set-Alias -Name ping -Value pingu`r`n"
+$neovimVimAlias = "Set-Alias -Name vim -Value nvim`r`n"
+$neovimViAlias = "Set-Alias -Name vi -Value nvim`r`n"
 New-Item -Path $profile -ItemType "file" -Value "$plsAlias $lazygitAlias $pinguAlias $neovimVimAlias $neovimViAlias" -Force
 
 #=========Configure installed apps=========
