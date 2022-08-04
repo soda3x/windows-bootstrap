@@ -30,7 +30,7 @@ Invoke-RestMethod get.scoop.sh | Invoke-Expression
 Invoke-Expression "scoop bucket add extras"
 
 # Download applist-scoop.txt from the bootstrap repository and install scoop apps
-Invoke-WebRequest -Uri https://raw.githubusercontent.com/soda3x/windows-bootstrap/master/applist-scoop.txt -OutFile .\applist-scoop.txt
+Invoke-WebRequest -Uri https://raw.githubusercontent.com/soda3x/windows-bootstrap/main/applist-scoop.txt -OutFile .\applist-scoop.txt
 
 [string[]] $scoopApps = Get-Content -Path '.\applist-scoop.txt'
 
@@ -39,7 +39,7 @@ foreach ($app in $scoopApps) {
 }
 
 # Download applist-winget.txt from the bootstrap repository and install winget apps
-Invoke-WebRequest -Uri https://raw.githubusercontent.com/soda3x/windows-bootstrap/master/applist-winget.txt -OutFile .\applist-winget.txt
+Invoke-WebRequest -Uri https://raw.githubusercontent.com/soda3x/windows-bootstrap/main/applist-winget.txt -OutFile .\applist-winget.txt
 
 [string[]] $wingetApps = Get-Content -Path '.\applist-winget.txt'
 
@@ -87,7 +87,7 @@ New-Item -Path $profile -ItemType "file" -Value "$plsAlias $lazygitAlias $pinguA
 New-Item -Path $env:USERPROFILE\AppData\Local -Name "nvim" -ItemType "directory"
 
 # Download and place nvim config into newly created nvim folder
-Invoke-WebRequest -Uri https://raw.githubusercontent.com/soda3x/windows-bootstrap/master/init.vim -OutFile $env:USERPROFILE\AppData\Local\nvim\init.vim
+Invoke-WebRequest -Uri https://raw.githubusercontent.com/soda3x/windows-bootstrap/main/init.vim -OutFile $env:USERPROFILE\AppData\Local\nvim\init.vim
 
 # Download vim-plug
 Invoke-WebRequest -Uri https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim  -OutFile $env:USERPROFILE\AppData\Local\nvim\autoload\plug.vim
