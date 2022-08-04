@@ -1,28 +1,31 @@
-# Change Execution Policy to run Powershell scripts
-Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Bypass -Force;
-
 #=========Configure windows settings=========
 
-# Firstly, turn off UAC. I hate it.
-Set-ItemProperty -Path REGISTRY::HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System -Name ConsentPromptBehaviorAdmin -Value 0
+# # Firstly, turn off UAC. I hate it.
+# Set-ItemProperty -Path REGISTRY::HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System -Name ConsentPromptBehaviorAdmin -Value 0
 
-# Show more info for files in Explorer
-Set-WindowsExplorerOptions -EnableShowProtectedOSFiles  -EnableShowFileExtensions -EnableShowFullPathInTitleBar -EnableShowHiddenFilesFoldersDrives
+# # Show more info for files in Explorer
+# Set-WindowsExplorerOptions -EnableShowProtectedOSFiles -EnableShowFileExtensions -EnableShowFullPathInTitleBar -EnableShowHiddenFilesFoldersDrives
 
-# Configure Windows Hyper-V virtualisation and WSL
-Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All -All
-Enable-WindowsOptionalFeature -Online Microsoft-Windows-Subsystem-Linux -All
+# # Configure Windows Hyper-V virtualisation and WSL
+# Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All -All
+# Enable-WindowsOptionalFeature -Online Microsoft-Windows-Subsystem-Linux -All
 
-# Disable bing search results from start-menu search
-Set-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Search -Name BingSearchEnabled -Type DWord -Value 0
+# # Disable bing search results from start-menu search
+# Set-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Search -Name BingSearchEnabled -Type DWord -Value 0
 
-# Change explorer home screen back to This PC
-Set-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced -Name LaunchTo -Type DWord -Value 1
-
-# Needed to run a remote script the first time
-Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+# # Change explorer home screen back to This PC
+# Set-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced -Name LaunchTo -Type DWord -Value 1
 
 #=========Install apps with package managers=========
+
+# Download applist-winget.txt from the bootstrap repository and install winget apps
+Invoke-WebRequest -Uri https://raw.githubusercontent.com/soda3x/windows-bootstrap/main/applist-winget.txt -OutFile .\applist-winget.txt
+
+[string[]] $wingetApps = Get-Content -Path '.\applist-winget.txt'
+
+foreach ($app in $wingetApps) {
+    Invoke-Expression "winget install $app"
+}
 
 # Get and Install scoop package manager
 Invoke-RestMethod get.scoop.sh | Invoke-Expression
@@ -36,15 +39,6 @@ Invoke-WebRequest -Uri https://raw.githubusercontent.com/soda3x/windows-bootstra
 
 foreach ($app in $scoopApps) {
     Invoke-Expression "scoop install $app"
-}
-
-# Download applist-winget.txt from the bootstrap repository and install winget apps
-Invoke-WebRequest -Uri https://raw.githubusercontent.com/soda3x/windows-bootstrap/main/applist-winget.txt -OutFile .\applist-winget.txt
-
-[string[]] $wingetApps = Get-Content -Path '.\applist-winget.txt'
-
-foreach ($app in $wingetApps) {
-    Invoke-Expression "winget install $app"
 }
 
 #=========Install stand-alone apps that can't be installed via a pkg manager=========
@@ -83,8 +77,9 @@ New-Item -Path $profile -ItemType "file" -Value "$plsAlias $lazygitAlias $pinguA
 
 # Download Neovim configuration and vim-plug
 
-# Make nvim directory in Local AppData
+# Make nvim and autoload directories in Local AppData
 New-Item -Path $env:USERPROFILE\AppData\Local -Name "nvim" -ItemType "directory"
+New-Item -Path $env:USERPROFILE\AppData\Local\nvim -Name "autoload" -ItemType "directory"
 
 # Download and place nvim config into newly created nvim folder
 Invoke-WebRequest -Uri https://raw.githubusercontent.com/soda3x/windows-bootstrap/main/init.vim -OutFile $env:USERPROFILE\AppData\Local\nvim\init.vim
