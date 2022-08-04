@@ -26,7 +26,9 @@ To configure Windows settings, run the following commands in an elevated Powersh
 
 ```Enable-WindowsOptionalFeature -Online Microsoft-Windows-Subsystem-Linux -All```
 
-6. Finally update Windows to the latest version and restart, the initial version of Windows 11 (build 22000) does not include winget.exe which is required.
+6. Update Windows to the latest version and restart, the initial version of Windows 11 (build 22000) does not include winget.exe which is required.
+
+7. Finally, open the Windows Store, navigate to Library and "Get Updates" and wait for updates to complete.
 
 ## Run the Bootstrap script
 
