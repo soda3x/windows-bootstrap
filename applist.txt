@@ -17,3 +17,5 @@ App list:
 - plex
 - pls (alias ls to this)
 - python
+- nanazip
+- git
