@@ -15,7 +15,7 @@ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All -All
 Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux -All
 
 # Add C:\tools to system path, stand-alone apps will be installed to C:\tools and will need to be on path
-[System.Environment]::SetEnvironmentVariable('Path','$Env:Path;C:\tools',[System.EnvironmentVariableTarget]::Machine)
+[System.Environment]::SetEnvironmentVariable('Path','$env:Path;C:\tools',[System.EnvironmentVariableTarget]::Machine)
 
 # Disable bing search results from start-menu search
 Set-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Search -Name BingSearchEnabled -Type DWord -Value 0

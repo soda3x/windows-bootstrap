@@ -39,9 +39,6 @@ Invoke-Expression "pipx install pls"
 # Make C:\tools directory
 New-Item -Path "c:\" -Name "tools" -ItemType "directory"
 
-# Add C:\tools to system path, stand-alone apps will be installed to C:\tools and will need to be on path
-[System.Environment]::SetEnvironmentVariable('Path','$Env:Path;C:\tools',[System.EnvironmentVariableTarget]::Machine)
-
 # Install portal and place in C:\tools
 Invoke-WebRequest -Uri https://github.com/SpatiumPortae/portal/releases/download/v1.0.3/portal_1.0.3_Windows_x86_64.zip -OutFile C:\tools\portal.exe
 
