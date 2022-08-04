@@ -1,4 +1,3 @@
-Git.Git
 M2Team.NanaZip
 Spotify.Spotify
 Microsoft.PowerToys
