@@ -1,19 +1,9 @@
 #=========Configure windows settings=========
 
-# # Firstly, turn off UAC. I hate it.
-# Set-ItemProperty -Path REGISTRY::HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System -Name ConsentPromptBehaviorAdmin -Value 0
-
-# # Show more info for files in Explorer
-# Set-WindowsExplorerOptions -EnableShowProtectedOSFiles -EnableShowFileExtensions -EnableShowFullPathInTitleBar -EnableShowHiddenFilesFoldersDrives
-
-# # Configure Windows Hyper-V virtualisation and WSL
-# Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All -All
-# Enable-WindowsOptionalFeature -Online Microsoft-Windows-Subsystem-Linux -All
-
-# # Disable bing search results from start-menu search
+# Disable bing search results from start-menu search
 Set-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Search -Name BingSearchEnabled -Type DWord -Value 0
 
-# # Change explorer home screen back to This PC
+# Change explorer home screen back to This PC
 Set-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced -Name LaunchTo -Type DWord -Value 1
 
 #=========Install apps with package managers=========
