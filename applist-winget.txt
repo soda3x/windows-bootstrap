@@ -1,0 +1,14 @@
+Git.Git
+M2Team.NanaZip
+Spotify.Spotify
+Microsoft.PowerToys
+Microsoft.OpenJDK.11
+Valve.Steam
+QL-Win.Quicklook
+Discord.Discord
+Nvidia.GeForceExperience
+Plex.PlexMediaServer
+qBittorrent.qBittorrent
+Microsoft.VisualStudioCode
+Python.Python.3
+Neovim.Neovim
