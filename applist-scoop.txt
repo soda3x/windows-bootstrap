@@ -1,3 +1,16 @@
 git
 lazygit
 glow
+mingw32
+vscode
+powertoys
+python
+neovim
+gsudo
+qbittorrent
+discord
+spotify
+7zip
+openjdk11
+plex-desktop
+quicklook
