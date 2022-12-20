@@ -45,7 +45,7 @@ Invoke-WebRequest -Uri https://github.com/SpatiumPortae/portal/releases/download
 
 # Alias commands in Powershell by creating a profile
 # Alias pls to ls
-$plsAlias = "Set-Alias -Name ls -Value pls`r\`n"
+$plsAlias = "Set-Alias -Name ls -Value pls`r`n"
 $lazygitAlias = "Set-Alias -Name lg -Value lazygit`r`n"
 $pinguAlias = "Set-Alias -Name ping -Value pingu`r`n"
 $neovimVimAlias = "Set-Alias -Name vim -Value nvim`r`n"
