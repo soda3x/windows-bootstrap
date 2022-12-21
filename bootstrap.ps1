@@ -27,6 +27,9 @@ Write-Output "Installing Git..."
 Invoke-Expression "scoop install git"
 
 Invoke-Expression "scoop bucket add extras"
+
+Invoke-Expression "scoop bucket add java"
+
 Write-Output "Done."
 
 # Download applist-scoop.txt from the bootstrap repository and install scoop apps
@@ -65,7 +68,9 @@ New-Item -Path "c:\" -Name "tools" -ItemType "directory"
 
 # Install portal and place in C:\tools
 Write-Output "Installing Portal..."
-Invoke-WebRequest -Uri https://github.com/SpatiumPortae/portal/releases/download/v1.0.3/portal_1.0.3_Windows_x86_64.zip -OutFile C:\tools\portal.exe
+Invoke-WebRequest -Uri https://github.com/SpatiumPortae/portal/releases/download/v1.0.3/portal_1.0.3_Windows_x86_64.zip -OutFile C:\tools\portal.zip
+Expand-Archive -Path "C:\tools\portal.zip" -DestinationPath "C:\tools"
+Remove-Item 'C:\tools\portal.zip'
 Write-Output "Done."
 
 

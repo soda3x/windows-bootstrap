@@ -12,5 +12,5 @@ qbittorrent
 discord
 spotify
 openjdk11
-plex-desktop
+plex-server
 quicklook
