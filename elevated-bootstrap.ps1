@@ -14,11 +14,11 @@ Stop-Process -processname explorer
 
 # Enable Hyper-V:
 Write-Output "Turning on Hyper-V..."
-Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All -All
+echo n | Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All -All
 
 # Enable WSL:
 Write-Output "Turning on WSL..."
-Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux -All
+echo n | Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux -All
 
 # Add C:\tools to system path, stand-alone apps will be installed to C:\tools and will need to be on path
 Write-Output "Adding C:\tools to the system path..."
@@ -31,3 +31,7 @@ Set-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Search -N
 # Change explorer home screen back to This PC
 Write-Output "Reverting Explorer Home screen back to 'This PC'..."
 Set-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced -Name LaunchTo -Type DWord -Value 1
+
+Write-Output "Finished running elevated bootstrap script..."
+$Shell = New-Object -ComObject "WScript.Shell"
+$Button = $Shell.Popup("Finished running elevated bootstrap script, you will need to restart your machine...", 0, "Windows Bootstrap script", 0)
