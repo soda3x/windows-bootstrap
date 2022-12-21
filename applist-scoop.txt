@@ -1,4 +1,3 @@
-git
 lazygit
 glow
 mingw32

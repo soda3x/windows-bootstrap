@@ -23,6 +23,9 @@ Write-Output "Done."
 Write-Output "Installing Scoop Package Manager..."
 Invoke-RestMethod get.scoop.sh | Invoke-Expression
 
+Write-Output "Installing Git..."
+Invoke-Expression "scoop install git"
+
 Invoke-Expression "scoop bucket add extras"
 Write-Output "Done."
 
