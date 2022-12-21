@@ -1,6 +1,8 @@
 lazygit
+vcredist2022
+dotnet-sdk
 glow
-mingw32
+mingw
 vscode
 powertoys
 python
@@ -9,7 +11,6 @@ gsudo
 qbittorrent
 discord
 spotify
-7zip
 openjdk11
 plex-desktop
 quicklook

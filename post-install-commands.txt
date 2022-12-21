@@ -1,3 +1,4 @@
 reg import "${env:userprofile}\scoop\apps\7zip\current\install-context.reg"
 reg import "${env:userprofile}\scoop\apps\vscode\current\install-context.reg"
 reg import "${env:userprofile}\scoop\apps\vscode\current\install-associations.reg"
+reg import "${env:userprofile}\scoop\apps\python\current\install-pep-514.reg"
