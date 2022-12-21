@@ -110,7 +110,6 @@ Write-Output "Done."
 Write-Output "Cleaning up..."
 Remove-Item '.\applist-winget.txt'
 Remove-Item '.\applist-scoop.txt'
-Remove-Item '.\applist-pip.txt'
 Remove-Item '.\post-install-commands.txt'
 Write-Output "Done."
 
