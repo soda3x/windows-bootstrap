@@ -26,7 +26,7 @@ Write-Output "Done."
 
 # Add C:\tools to system path, stand-alone apps will be installed to C:\tools and will need to be on path
 Write-Output "Adding C:\tools to the system path..."
-[System.Environment]::SetEnvironmentVariable('Path','${env:Path};C:\tools',[System.EnvironmentVariableTarget]::Machine)
+[System.Environment]::SetEnvironmentVariable('Path',${env:Path};C:\tools,[System.EnvironmentVariableTarget]::Machine)
 Write-Output "Done."
 
 # Disable bing search results from start-menu search
