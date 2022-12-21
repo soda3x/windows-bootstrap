@@ -1,3 +1,4 @@
+Clear-Host
 Write-Output "Running bootstrap script..."
 $Shell = New-Object -ComObject "WScript.Shell"
 $Button = $Shell.Popup("Please ensure Windows 11 is up to date before continuing.`r`nThis script must NOT be run in an elevated shell.", 0, "Windows Bootstrap script", 0)
@@ -14,7 +15,7 @@ Write-Output "Done."
 Write-Output "Installing Winget Apps..."
 foreach ($app in $wingetApps) {
     Write-Output "Installing $app..."
-    Invoke-Expression "winget install $app"
+    Invoke-Expression "winget install $app --accept-package-agreements"
 }
 Write-Output "Done."
 
