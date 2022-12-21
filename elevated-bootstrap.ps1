@@ -14,11 +14,11 @@ Stop-Process -processname explorer
 
 # Enable Hyper-V:
 Write-Output "Turning on Hyper-V..."
-echo n | Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All -All
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All -All -NoRestart
 
 # Enable WSL:
 Write-Output "Turning on WSL..."
-echo n | Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux -All
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux -All -NoRestart
 
 # Add C:\tools to system path, stand-alone apps will be installed to C:\tools and will need to be on path
 Write-Output "Adding C:\tools to the system path..."
