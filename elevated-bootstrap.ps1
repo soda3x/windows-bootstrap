@@ -39,6 +39,12 @@ Write-Output "Reverting Explorer Home screen back to 'This PC'..."
 Set-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced -Name LaunchTo -Type DWord -Value 1
 Write-Output "Done."
 
+# Uninstall OneDrive
+Write-Output "Uninstalling OneDrive..."
+Invoke-Expression "taskkill /f /im OneDrive.exe"
+Invoke-Expression "${env:SystemRoot}\SysWOW64\OneDriveSetup.exe /uninstall"
+Write-Output "Done."
+
 Write-Output "Finished running elevated bootstrap script..."
 $Shell = New-Object -ComObject "WScript.Shell"
 $Button = $Shell.Popup("Finished running elevated bootstrap script, you will need to restart your machine...", 0, "Windows Bootstrap script", 0)
