@@ -42,7 +42,7 @@ Write-Output "Done."
 # Uninstall OneDrive
 Write-Output "Uninstalling OneDrive..."
 Invoke-Expression "taskkill /f /im OneDrive.exe"
-Invoke-Expression "${env:SystemRoot}\SysWOW64\OneDriveSetup.exe /uninstall"
+Invoke-Expression "${env:SystemRoot}\system32\OneDriveSetup.exe /uninstall"
 Write-Output "Done."
 
 Write-Output "Finished running elevated bootstrap script..."
