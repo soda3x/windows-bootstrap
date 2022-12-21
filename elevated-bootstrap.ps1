@@ -26,7 +26,9 @@ Write-Output "Done."
 
 # Add C:\tools to system path, stand-alone apps will be installed to C:\tools and will need to be on path
 Write-Output "Adding C:\tools to the system path..."
-[System.Environment]::SetEnvironmentVariable('Path',${env:Path};C:\tools,[System.EnvironmentVariableTarget]::Machine)
+$oldpath = (Get-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH).path
+$newpath = "$oldpath;C:\tools"
+Set-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH -Value $newPath
 Write-Output "Done."
 
 # Disable bing search results from start-menu search
