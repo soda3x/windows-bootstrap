@@ -1,0 +1,3 @@
+reg import "${env:userprofile}\scoop\apps\7zip\current\install-context.reg"
+reg import "${env:userprofile}\scoop\apps\vscode\current\install-context.reg"
+reg import "${env:userprofile}\scoop\apps\vscode\current\install-associations.reg"

@@ -1,31 +1,42 @@
+Write-Output "Running bootstrap script..."
+$Shell = New-Object -ComObject "WScript.Shell"
+$Button = $Shell.Popup("Please ensure Windows 11 is up to date before continuing.", 0, "Windows Bootstrap script", 0)
+
 #=========Install apps with package managers=========
 
 # Download applist-winget.txt from the bootstrap repository and install winget apps
+Write-Output "Downloading Winget App list..."
 Invoke-WebRequest -Uri https://raw.githubusercontent.com/soda3x/windows-bootstrap/main/applist-winget.txt -OutFile .\applist-winget.txt
 
 [string[]] $wingetApps = Get-Content -Path '.\applist-winget.txt'
 
+Write-Output "Installing Winget Apps..."
 foreach ($app in $wingetApps) {
+    Write-Output "Installing $app..."
     Invoke-Expression "winget install $app"
 }
 
 # Get and Install scoop package manager
+Write-Output "Installing Scoop Package Manager..."
 Invoke-RestMethod get.scoop.sh | Invoke-Expression
 
 Invoke-Expression "scoop bucket add extras"
 
 # Download applist-scoop.txt from the bootstrap repository and install scoop apps
+Write-Output "Downloading Scoop App list..."
 Invoke-WebRequest -Uri https://raw.githubusercontent.com/soda3x/windows-bootstrap/main/applist-scoop.txt -OutFile .\applist-scoop.txt
 
 [string[]] $scoopApps = Get-Content -Path '.\applist-scoop.txt'
 
 foreach ($app in $scoopApps) {
+    Write-Output "Installing $app..."
     Invoke-Expression "scoop install $app"
 }
 
 #=========Install stand-alone apps that can't be installed via a pkg manager=========
 
 # Install pipx
+Write-Output "Installing Pipx..."
 Invoke-Expression "python3 -m pip install --user pipx"
 
 # Use regex to get Python3.X path and keep this script future proof
@@ -34,12 +45,14 @@ $python3Path = Get-ChildItem | Where-Object $_.Name -match {"$env:USERPROFILE\Ap
 Invoke-Expression "cd $python3Path\pipx.exe ensurepath"
 
 # Install pls
+Write-Output "Installing pls..."
 Invoke-Expression "pipx install pls"
 
 # Make C:\tools directory
 New-Item -Path "c:\" -Name "tools" -ItemType "directory"
 
 # Install portal and place in C:\tools
+Write-Output "Installing Portal..."
 Invoke-WebRequest -Uri https://github.com/SpatiumPortae/portal/releases/download/v1.0.3/portal_1.0.3_Windows_x86_64.zip -OutFile C:\tools\portal.exe
 
 
@@ -55,13 +68,35 @@ New-Item -Path $profile -ItemType "file" -Value "$plsAlias $lazygitAlias $pinguA
 #=========Configure installed apps=========
 
 # Download Neovim configuration and vim-plug
-
+Write-Output "Installing Neovim..."
 # Make nvim and autoload directories in Local AppData
 New-Item -Path $env:USERPROFILE\AppData\Local -Name "nvim" -ItemType "directory"
 New-Item -Path $env:USERPROFILE\AppData\Local\nvim -Name "autoload" -ItemType "directory"
 
+Write-Output "Configuring Neovim..."
 # Download and place nvim config into newly created nvim folder
 Invoke-WebRequest -Uri https://raw.githubusercontent.com/soda3x/windows-bootstrap/main/init.vim -OutFile $env:USERPROFILE\AppData\Local\nvim\init.vim
 
 # Download vim-plug
 Invoke-WebRequest -Uri https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim  -OutFile $env:USERPROFILE\AppData\Local\nvim\autoload\plug.vim
+
+# Run post-install commands
+Write-Output "Running post install commands..."
+Invoke-WebRequest -Uri https://raw.githubusercontent.com/soda3x/windows-bootstrap/main/post-install-commands.txt -OutFile .\post-install-commands.txt
+
+[string[]] $postInstallCmds = Get-Content -Path '.\post-install-commands.txt'
+
+foreach ($cmd in $postInstallCmds) {
+    Invoke-Expression "$cmd"
+}
+
+# Finally clean up by removing files created by this script
+Write-Output "Cleaning up..."
+Remove-Item '.\applist-winget.txt'
+Remove-Item '.\applist-scoop.txt'
+Remove-Item '.\applist-pip.txt'
+Remove-Item '.\post-install-commands.txt'
+
+Write-Output "Finished."
+$Shell = New-Object -ComObject "WScript.Shell"
+$Button = $Shell.Popup("Bootstrap script finished.", 0, "Windows Bootstrap script", 0)
