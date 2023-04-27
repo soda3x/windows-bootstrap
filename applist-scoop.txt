@@ -14,3 +14,4 @@ spotify
 openjdk11
 plex-server
 quicklook
+firefox
