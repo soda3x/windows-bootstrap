@@ -33,7 +33,7 @@
         "defaults": {},
         "list": [
             {
-                "colorScheme": "Banana Blueberry",
+                "colorScheme": "X Dotshare",
                 "commandline": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -nologo",
                 "cursorShape": "filledBox",
                 "font": {
@@ -44,7 +44,7 @@
                 "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
                 "hidden": false,
                 "name": "PowerShell",
-                "opacity": 80,
+                "opacity": 100,
                 "source": "Windows.Terminal.PowershellCore",
                 "startingDirectory": "~",
                 "useAcrylic": true
@@ -60,7 +60,7 @@
             },
             {
                 "bellStyle": "none",
-                "colorScheme": "Banana Blueberry",
+                "colorScheme": "X Dotshare",
                 "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -nologo",
                 "cursorShape": "filledBox",
                 "font": {
@@ -71,7 +71,7 @@
                 "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
                 "hidden": false,
                 "name": "Windows PowerShell",
-                "opacity": 80,
+                "opacity": 100,
                 "startingDirectory": "~",
                 "useAcrylic": true
             },
@@ -106,6 +106,27 @@
             "selectionBackground": "#220525",
             "white": "#F1F1F1",
             "yellow": "#E6C62F"
+        },
+        {
+            "name": "X Dotshare",
+            "black": "#101010",
+            "red": "#E84F4F",
+            "green": "#B8D68C",
+            "yellow": "#E1AA5D",
+            "blue": "#7DC1CF",
+            "purple": "#9B64FB",
+            "cyan": "#6D878D",
+            "white": "#DDDDDD",
+            "brightBlack": "#404040",
+            "brightRed": "#D23D3D",
+            "brightGreen": "#A0CF5D",
+            "brightYellow": "#F39D21",
+            "brightBlue": "#4E9FB1",
+            "brightPurple": "#8542FF",
+            "brightCyan": "#42717B",
+            "brightWhite": "#DDDDDD",
+            "background": "#151515",
+            "foreground": "#D7D0C7"
         }
     ],
     "windowingBehavior": "useAnyExisting"
