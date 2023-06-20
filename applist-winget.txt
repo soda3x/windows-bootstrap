@@ -2,3 +2,4 @@ Valve.Steam
 Nvidia.GeForceExperience
 Microsoft.DotNet.Runtime.6
 Microsoft.DotNet.Runtime.7
+Microsoft.Powershell
