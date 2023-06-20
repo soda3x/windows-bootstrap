@@ -12,8 +12,8 @@ qbittorrent
 discord
 spotify
 openjdk11
-plex-server
 quicklook
 firefox
 heroic-games-launcher
 wingetui
+podman
