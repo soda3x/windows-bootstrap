@@ -17,3 +17,6 @@ firefox
 heroic-games-launcher
 wingetui
 podman
+nodejs
+bitwarden
+micaforeveryone
