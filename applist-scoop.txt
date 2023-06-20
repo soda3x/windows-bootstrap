@@ -16,3 +16,4 @@ plex-server
 quicklook
 firefox
 heroic-games-launcher
+wingetui
