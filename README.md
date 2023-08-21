@@ -19,3 +19,6 @@ The elevated bootstrap script automatically configures some Windows settings and
 Run the following command in a non-elevated Powershell session:
 
 ```Invoke-WebRequest -Uri https://raw.githubusercontent.com/soda3x/windows-bootstrap/main/bootstrap.ps1 -OutFile .\bootstrap.ps1; Invoke-Expression .\bootstrap.ps1```
+
+## Configure Spicetify
+[See here](https://github.com/soda3x/windows-bootstrap/tree/main/spicetify-cli)
