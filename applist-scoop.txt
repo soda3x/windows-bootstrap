@@ -20,3 +20,4 @@ podman
 nodejs
 bitwarden
 micaforeveryone
+spicetify-cli
