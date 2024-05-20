@@ -92,6 +92,9 @@ Move-Item $env:LOCALAPPDATA\nvim $env:LOCALAPPDATA\nvim.bak
 Move-Item $env:LOCALAPPDATA\nvim-data $env:LOCALAPPDATA\nvim-data.bak
 git clone --depth 1 https://github.com/AstroNvim/template $env:LOCALAPPDATA\nvim
 Remove-Item $env:LOCALAPPDATA\nvim\.git -Recurse -Force
+
+Invoke-Expression "cargo install tree-sitter-cli"
+
 # TODO: Add my custom lua stuff
 
 # Run post-install commands
