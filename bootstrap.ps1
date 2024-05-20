@@ -30,6 +30,8 @@ Invoke-Expression "scoop bucket add extras"
 
 Invoke-Expression "scoop bucket add java"
 
+Invoke-Expression "scoop bucket add nerd-fonts"
+
 Write-Output "Done."
 
 # Download applist-scoop.txt from the bootstrap repository and install scoop apps
