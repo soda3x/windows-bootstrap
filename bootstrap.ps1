@@ -85,20 +85,12 @@ New-Item -Path $profile -ItemType "file" -Value "$plsAlias $lazygitAlias $pinguA
 
 #=========Configure installed apps=========
 
-# Download Neovim configuration and vim-plug
-Write-Output "Installing Neovim..."
-# Make nvim and autoload directories in Local AppData
-New-Item -Path $env:USERPROFILE\AppData\Local -Name "nvim" -ItemType "directory"
-New-Item -Path $env:USERPROFILE\AppData\Local\nvim -Name "autoload" -ItemType "directory"
-Write-Output "Done."
-
-Write-Output "Configuring Neovim..."
-# Download and place nvim config into newly created nvim folder
-Invoke-WebRequest -Uri https://raw.githubusercontent.com/soda3x/windows-bootstrap/main/init.vim -OutFile $env:USERPROFILE\AppData\Local\nvim\init.vim
-
-# Download vim-plug
-Invoke-WebRequest -Uri https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim  -OutFile $env:USERPROFILE\AppData\Local\nvim\autoload\plug.vim
-Write-Output "Done."
+# Configure Neovim
+Move-Item $env:LOCALAPPDATA\nvim $env:LOCALAPPDATA\nvim.bak
+Move-Item $env:LOCALAPPDATA\nvim-data $env:LOCALAPPDATA\nvim-data.bak
+git clone --depth 1 https://github.com/AstroNvim/template $env:LOCALAPPDATA\nvim
+Remove-Item $env:LOCALAPPDATA\nvim\.git -Recurse -Force
+# TODO: Add my custom lua stuff
 
 # Run post-install commands
 Write-Output "Running post install commands..."
