@@ -26,3 +26,4 @@ nvm
 bitwarden
 micaforeveryone
 spicetify-cli
+CascadiaCode-NF
