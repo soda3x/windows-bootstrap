@@ -2,7 +2,6 @@ lazygit
 vcredist2022
 dotnet-sdk
 glow
-mingw
 vscode
 powertoys
 python
@@ -27,3 +26,4 @@ bitwarden
 micaforeveryone
 spicetify-cli
 CascadiaCode-NF
+gcc
