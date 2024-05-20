@@ -27,3 +27,4 @@ micaforeveryone
 spicetify-cli
 CascadiaCode-NF
 gcc
+rust
