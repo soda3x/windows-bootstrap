@@ -7,6 +7,11 @@ vscode
 powertoys
 python
 neovim
+ripgrep
+gdu
+bottom
+fastfetch
+gd
 gsudo
 qbittorrent
 discord
@@ -17,7 +22,7 @@ firefox
 heroic-games-launcher
 wingetui
 podman
-nodejs
+nvm
 bitwarden
 micaforeveryone
 spicetify-cli
